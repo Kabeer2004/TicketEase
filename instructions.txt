@@ -1,0 +1,36 @@
+instructions to run:
+
+1. install python
+2. install required modules
+python -m pip install flask sqlalchemy flask-mail flask-sqlalchemy aiosmtpd qrcode
+3. run dbinitialize.py to initialize the database - optional and can be skipped if site.db exists in the instance folder
+python dbinitialize.py
+4. run mailserver.py - this starts the local smtp server that is used for sending emails to user's
+python mailserver.py
+5. run the main app
+python app.py
+6. the app will be launched on localhost
+
+instructions for site usage:
+you can easily create user accounts by signing up.
+during signup, an otp will be sent to the user email - since we have not set up any real email sending logic, the email will be dumped as an output in the terminal window where the mail server is running
+so you can verify the otp from there.
+you can then book a ticket - once you have booked a ticket, you can even view this in the admin dashboard
+to access the admin dashboard, scroll down to the bottom of the homepage of the site. here you will find an admin login button
+you can login to the admin dashboard to see current tickets and user feedback. you can cancel tickets from the table view or even enter scanning mode to scan a ticket.
+the credentials for admin login are
+email: adminuser@ticketease.com
+password: admin@ticketease
+for scanning tickets, hold up the QR code of the ticket in front of your camera and click the scan button.
+the ticket will be scanned, validated and then cancelled.
+
+instructions to edit:
+if you wish to edit this app, you can make most of the needed changes without installing anything additional
+however, if you wish to edit/add new tailwind classes, you will need to 
+1. install npm (nodejs)
+2. run 
+npm install tailwindcss
+3. run the following command
+npx tailwindcss -i ./static/css/input.css -o ./static/dist/css/output.css --watch
+
+this will compile the tailwindcss classes to the output.css file as you add them

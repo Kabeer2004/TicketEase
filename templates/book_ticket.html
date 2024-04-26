@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}">
+</head>
+<body class = "bg-gray-500">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a class="font-mono text-white" href="{{url_for('index')}}">TicketEase</a>
+          <p class = "font-mono text-white block py-2 px-3">Welcome, {{user_username}}</p>
+          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li>
+                <a href="{{url_for('user_dashboard')}}" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Dashboard</a>
+              </li>
+              <li>
+                <a href="{{url_for('logout')}}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="mx-auto">
+        <div class="fill">
+            <form action="{{ url_for('book_ticket') }}" method="POST" class="max-w-sm mx-auto">
+                <label for="start_point" class="mt-20 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Start Point</label>
+                <select id="start_point" name="start_point" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="7 Bidi Kamgar VN Road">Bidi Kamgar Vasahat Nagar Road</option>
+                  <option value="8 Sangharsh Nagar">Sangharsh Nagar</option>
+                  <option value="9 Sunita Nagar">Sunita Nagar</option>
+                  <option value="10 Panyachi Taki Chandannagar">Panyachi Taki Chandannagar</option>
+                  <option value="11 5 Wa Mile">5 Wa Mile</option>
+                  <option value="12 Viman Nagar Corner">Viman Nagar Corner</option>
+                  <option value="13 Vadgaonsheri Phata">Vadgaonsheri Phata</option>
+                  <option value="14 Ramwadi Jakat Naka">Ramwadi Jakat Naka</option>
+                  <option value="15 Shastri Nagar">Shastri Nagar</option>
+                  <option value="16 Wadia Bungalow">Wadia Bungalow</option>
+                  <option value="17 Gunjan Corner">Gunjan Corner</option>
+                  <option value="18 Yerwada">Yerwada</option>
+                  <option value="19 Bund Garden Central Mall">Bund Garden Central Mall</option>
+                  <option value="20 Connaught Place (Bund Garden Road)">Connaught Place (Bund Garden Road)</option>
+                  <option value="21 Jahangir Hospital">Jahangir Hospital</option>
+                  <option value="22 Alankar Talkies">Alankar Talkies</option>
+                  <option value="23 Income Tax Office">Income Tax Office</option>
+                  <option value="24 G.P.O.">G.P.O.</option>
+                  <option value="25 Collector Office">Collector Office</option>
+                  <option value="26 Zila Parishad">Zila Parishad</option>
+                  <option value="27 KEM Hospital">KEM Hospital</option>
+                  <option value="28 Power House Rastapeth">Power House Rastapeth</option>
+                  <option value="29 Nana Path / Modern Bakery">Nana Path / Modern Bakery</option>
+                  <option value="30 AD Camp Chowk">AD Camp Chowk</option>
+                  <option value="31 Ramoshi Gate">Ramoshi Gate</option>                                      
+                </select>
+                <label for="stop_point" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Stop Point</label>
+                <select id="stop_point" name="stop_point" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="7 Bidi Kamgar VN Road">Bidi Kamgar Vasahat Nagar Road</option>
+                  <option value="8 Sangharsh Nagar">Sangharsh Nagar</option>
+                  <option value="9 Sunita Nagar">Sunita Nagar</option>
+                  <option value="10 Panyachi Taki Chandannagar">Panyachi Taki Chandannagar</option>
+                  <option value="11 5 Wa Mile">5 Wa Mile</option>
+                  <option value="12 Viman Nagar Corner">Viman Nagar Corner</option>
+                  <option value="13 Vadgaonsheri Phata">Vadgaonsheri Phata</option>
+                  <option value="14 Ramwadi Jakat Naka">Ramwadi Jakat Naka</option>
+                  <option value="15 Shastri Nagar">Shastri Nagar</option>
+                  <option value="16 Wadia Bungalow">Wadia Bungalow</option>
+                  <option value="17 Gunjan Corner">Gunjan Corner</option>
+                  <option value="18 Yerwada">Yerwada</option>
+                  <option value="19 Bund Garden Central Mall">Bund Garden Central Mall</option>
+                  <option value="20 Connaught Place (Bund Garden Road)">Connaught Place (Bund Garden Road)</option>
+                  <option value="21 Jahangir Hospital">Jahangir Hospital</option>
+                  <option value="22 Alankar Talkies">Alankar Talkies</option>
+                  <option value="23 Income Tax Office">Income Tax Office</option>
+                  <option value="24 G.P.O.">G.P.O.</option>
+                  <option value="25 Collector Office">Collector Office</option>
+                  <option value="26 Zila Parishad">Zila Parishad</option>
+                  <option value="27 KEM Hospital">KEM Hospital</option>
+                  <option value="28 Power House Rastapeth">Power House Rastapeth</option>
+                  <option value="29 Nana Path / Modern Bakery">Nana Path / Modern Bakery</option>
+                  <option value="30 AD Camp Chowk">AD Camp Chowk</option>
+                  <option value="31 Ramoshi Gate">Ramoshi Gate</option>                                      
+                </select>
+                <div class="text-center mt-4">
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Proceed to Payment</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</body>
+</html>
